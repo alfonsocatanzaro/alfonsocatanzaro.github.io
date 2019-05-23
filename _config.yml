@@ -5,6 +5,7 @@ relative_links:
   enabled: true
   collections: true
 include:
+  - README.md
   - DOCKER.md
   - DOTNET.md
   - ANGULAR.md
