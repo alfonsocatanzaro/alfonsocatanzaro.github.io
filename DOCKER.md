@@ -1,2 +1,0 @@
-# Docker command
-Test
