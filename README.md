@@ -5,3 +5,6 @@
 [dotnet](dotnet-note.md)
 
 [docker](docker-note.md)
+
+[linux](linux-note.md)
+
