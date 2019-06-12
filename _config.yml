@@ -6,6 +6,7 @@ relative_links:
   collections: true
 include:
   - README.md
-  - DOCKER.md
-  - DOTNET.md
-  - ANGULAR.md
+  - docker-note.md
+  - dotnet-note.md
+  - angular-note.md
+  - linux-note.md
