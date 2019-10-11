@@ -8,3 +8,6 @@
 
 [linux](linux-note.md)
 
+[linux CoreOS](linux-coreos.md)
+
+[teleport](teleport.md)
