@@ -1,13 +1,11 @@
 # alfonsocatanzaro.github.io
 
-[angular](angular-note.md)
+- [angular](angular.md)
+- [dotnet](dotnet.md)
 
-[dotnet](dotnet-note.md)
-
-[docker](docker-note.md)
-
-[linux](linux-note.md)
-
-[linux CoreOS](linux-coreos.md)
-
-[teleport](teleport.md)
+- Linux
+  - [Docker](docker.md)
+  - [Ubuntu srv](linux-ubuntus.md)
+  - [CentOs](linux-centos.md)
+  - [CoreOS](linux-coreos.md)
+  - [teleport](teleport.md)
