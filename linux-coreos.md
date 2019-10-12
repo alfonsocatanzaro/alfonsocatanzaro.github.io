@@ -13,6 +13,8 @@
 
 ##### Write this:
 ```yaml
+#cloud-config 
+
  users:
   - name: "<username>"
     passwd: "<generatedhash from sudossl passwd -1 command>"
