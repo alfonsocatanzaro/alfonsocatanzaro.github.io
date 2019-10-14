@@ -69,3 +69,40 @@ http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kube
 
 ##### Create token for access:
 >`kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')`
+
+
+
+
+
+
+
+
+### Remove node
+
+retrieve list nodes from master: `kubectl get nodes`
+
+#### from master:
+```shell
+node=<nodename> 
+kubectl drain $node --delete-local-data --force --ignore-daemonsets 
+kubectl delete node $node
+```
+
+#### from node:
+```shell
+sudo apt-get purge kubeadm kubectl kubelet kubernetes-cni kube* && \
+sudo apt-get autoremove && \
+sudo rm -rf ~/.kube
+```
+
+
+#### Remove docker
+To identify what installed package you have: `dpkg -l | grep -i docker`
+```shell
+sudo apt-get purge -y docker-engine docker docker.io docker-ce && \
+sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce && \
+sudo rm -rf /var/lib/docker /etc/docker && \
+sudo rm /etc/apparmor.d/docker && \
+sudo groupdel docker && \
+sudo rm -rf /var/run/docker.sock
+```
