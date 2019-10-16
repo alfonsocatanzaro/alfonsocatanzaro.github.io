@@ -55,24 +55,47 @@ The nodes must have unique name, change it if necessary with this command: `sudo
 
 ### Install Dashboard
 chek last stable version on [https://github.com/kubernetes/dashboard](https://github.com/kubernetes/dashboard)
-
 >`sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml`
 
 latest version (even betas) [https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
 >`sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta4/aio/deploy/recommended.yaml`
 
+#### Create service account:
+create admin-user.yaml
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+```
+
+create admin-user-clusterrolebinding.yaml
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+```
+>`kubectl apply -f admin-user.yaml`  
+>`kubectl apply -f admin-user-clusterrolebinding.yaml` 
+
+
+
 #### start proxy for connection:
 >`kubectl proxy --address='0.0.0.0' --disable-filter=true &`  
-
-
 http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ 
 
 ##### Create token for access:
 >`kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')`
-
-
-
-
 
 
 
