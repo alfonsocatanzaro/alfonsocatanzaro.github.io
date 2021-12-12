@@ -38,7 +38,7 @@ kubeadm version
 ### Step 1: Disable swap memory (if running) on both the nodes
 >`sudo swapoff -a`  
 >`sudo swapoff /swap.img`
->`sudo rm -f /swap.img
+>`sudo rm -f /swap.img`
 
 ### Step 2: Give Unique hostnames to each node
 The nodes must have unique name, change it if necessary with this command: `sudo hostnamectl set-hostname <hostname-here>`
